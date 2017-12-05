@@ -1,0 +1,20 @@
+#app
+  transition-group(tag="ul",name="fade")
+    li.postit(v-for="(p,pid) in postits",
+            :style="postitCss(p)"
+            @mousedown="selectId($event,pid)",
+            @touchstart="selectId($event,pid)",
+            :key="pid")
+      .text(v-html="newLineToBr(p.text)")
+      .colorPalettes
+        .block(v-for="c in colorList", 
+               :style="{'background-color': c.color}",
+               @click="setPostitColor(pid,c.name)")
+      i.fa.fa-pencil(@click="editText(pid)")
+      i.fa.fa-trash-o(@click="deletePostit(pid)")
+  ul.datalist
+    li.addPost(@click="addPostit") Add PostIt +      
+    li(v-for="(p,pid) in postits")
+      h3.title {{p.text}} ({{p.color}})
+      textarea(v-model="p.text", v-on:change="updateText(pid)")
+    

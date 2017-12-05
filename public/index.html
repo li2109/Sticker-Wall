@@ -1,4 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Sticker</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  
 <div id="app">
   <transition-group tag="ul" name="fade">
     <li class="postit" v-for="(p,pid) in postits" :style="postitCss(p)" @mousedown="selectId($event,pid)" @touchstart="selectId($event,pid)" :key="pid">
@@ -16,3 +31,11 @@
     </li>
   </ul>
 </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js'></script>
+<script src='https://www.gstatic.com/firebasejs/4.7.0/firebase.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.js'></script>
+
+    <script  src="js/index.js"></script>
+
+</body>
+</html>
