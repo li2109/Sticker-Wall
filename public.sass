@@ -1,0 +1,29 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanssc.css)
+
+
+*,*:before,*:after
+  border: solid 1px
+  font-family: 'Noto Sans SC'
+
+$colorYellow: #FFEB67
+$colorBlue: #A5D8D6
+$colorRed: #EF898C
+$colorGreen: #CBE196
+
+@mixin size($w, $h:$w)
+  width: $w
+  height: $h
+
+$colorBlack: #3E3A39
+
+hmtml, body
+  //background-color: $colorBlack
+  
+.postit
+  +size(240px)
+  font-size: calc( 240px/ 4 - 15px )
+  display: flex
+  justify-content: center
+  align-items: center
+  background-color: $colorYellow
+  
