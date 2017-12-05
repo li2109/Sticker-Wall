@@ -7,6 +7,10 @@
 
 hmtml, body {
   background-color: #3E3A39;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
 }
 
 .postit {

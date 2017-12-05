@@ -27,8 +27,29 @@ var vm = new Vue({
         pos: { x: 20, y: 400 }
       }
     ],
-    nowId : -1
+    nowId : -1,
+    mousePos: {
+      x: 0,
+      y:0
+    },
+    startMousePos: {
+     x: 0,
+     y:0
+   }
+
   },
+  watch: {
+    mousePos(){
+      if(this.nowId != -1)
+        {
+          let nowPostit = this.postits[this.nowId]
+          nowPostit.pos.x = this.mousePos.x-this.startMousePos.x
+          nowPostit.pos.y = this.mousePos.y-this.startMousePos.y
+        }
+      console.log(this.mousePos)
+    }  
+  },
+  
   methods: {
     postitCss(p) {
       return {
@@ -38,9 +59,14 @@ var vm = new Vue({
         backgroundColor: this.colorList.find(o=>o.name==p.color).color
       }
     },
-    selectId(id){
+    selectId(evt, id){
       console.log(id)
       this.nowId =id
+      this.startMousePos={
+        x:evt.offsetX,
+        y:evt.offsetY,
+      }
+      console.log("start",this.startMousePos)
     }
   }
 })
@@ -48,12 +74,13 @@ var vm = new Vue({
 window.onmousemove=function (evt){
   console.log(evt)
   if(vm.nowId != -1){
-      vm.postits[0].pos.x=evt.pageX
-      vm.postits[0].pos.y=evt.pageY
+      console.log(evt)
+      vm.mousePos ={x: evt.pageX, y: evt.pageY}
   }
 
 }
 
-window.onmouseup = () =>{
+window.onmouseup = (evt) =>{
+  console.log(evt)
   vm.nowId = -1
 }

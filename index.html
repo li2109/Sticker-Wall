@@ -1,6 +1,6 @@
 
 <div id="app">
-  <div class="postit" v-for="(p, pid) in postits" :style="postitCss(p)" @click="selectId(pid)">
+  <div class="postit" v-for="(p, pid) in postits" :style="postitCss(p)" @mousedown="selectId($event, pid)">
     <div class="text">{{p.text}}</div>
   </div>
   <ul class="datalist">
