@@ -1,9 +1,12 @@
 
 <div id="app">
-  <div class="postit" v-for="(p, pid) in postits" :style="postitCss(p)">
+  <div class="postit" v-for="(p, pid) in postits" :style="postitCss(p)" @click="selectId(pid)">
     <div class="text">{{p.text}}</div>
   </div>
   <ul class="datalist">
+    <li>
+      <h1 style="color: white">{{nowId}}</h1>
+    </li>
     <li v-for="(p, pid) in postits">
       <input v-model="p.text"/>
       <input v-model="p.color"/>
