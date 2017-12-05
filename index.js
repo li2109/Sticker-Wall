@@ -89,6 +89,14 @@ var vm = new Vue({
           y: 200 + Math.random() * 200
         }
       });
+    },
+    setText(pid){
+      let text = prompt("Please input new sentence!",this.postits[pid].text)
+      
+      if(text){
+        this.postits[pid].text = text
+      }
+      
     }
   }
 });

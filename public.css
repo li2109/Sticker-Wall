@@ -40,6 +40,8 @@ hmtml, body {
 .postit .colorList {
   position: absolute;
   bottom: -60px;
+  display: flex;
+  flex-direction: row;
 }
 .postit .colorList .block {
   margin-right: 10px;
