@@ -5,6 +5,10 @@
   color: #44403F;
 }
 
+hmtml, body {
+  background-color: #3E3A39;
+}
+
 .postit {
   width: 240px;
   height: 240px;
@@ -16,4 +20,12 @@
   letter-spacing: 10px;
   font-weight: 500;
   box-shadow: 15px 10px 40px rgba(0, 0, 0, 0.4);
+  position: absolute;
+}
+
+.datalist {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  width: 30%;
 }
