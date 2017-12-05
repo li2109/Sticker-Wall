@@ -1,10 +1,10 @@
 
 <div id="app">
-  <transiton-group name="fade" tag="ul">
+  <transition-group name="fade" tag="ul">
     <li class="postit" v-for="(p, pid) in postits" :key="pid" :style="postitCss(p)" @mousedown="selectId($event, pid)">
       <div class="text">{{p.text}}</div>
     </li>
-  </transiton-group>
+  </transition-group>
   <ul class="datalist">
     <li>
       <h1 style="color: white">{{nowId}}</h1>
@@ -14,6 +14,7 @@
       <!--input(v-model="p.color")-->
       <div class="colorList">
         <div class="block" v-for="color in colorList" :styl="{backgroundColor: color.color}" @click="p.color=color.name"></div>
+        <button @click="postits.splice(pid,1)">Delete     </button>
       </div>
     </li>
     <button @click="addPostit">+ New Sticker</button>
