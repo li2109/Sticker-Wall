@@ -21,9 +21,7 @@ hmtml, body {
   font-weight: 500;
   box-shadow: 15px 10px 40px rgba(0, 0, 0, 0.4);
   position: absolute;
-}
-
-.datalist {
+  transition: background-color 0.5s;
   position: fixed;
   right: 20px;
   top: 20px;
