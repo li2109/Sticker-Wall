@@ -1,3 +1,11 @@
-.postit
-  .text Something Here
-  
+
+<div id="app">
+  <div class="postit" v-for="(p, pid) in postits" :style="postitCss(p)">
+    <div class="text">{{p.text}}</div>
+  </div>
+  <ul class="datalist">
+    <li v-for="(p, pid) in postits">
+      <input v-model="p.text"/>
+    </li>
+  </ul>
+</div>
