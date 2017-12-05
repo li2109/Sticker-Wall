@@ -9,7 +9,11 @@
     </li>
     <li v-for="(p, pid) in postits">
       <input v-model="p.text"/>
-      <input v-model="p.color"/>
+      <!--input(v-model="p.color")-->
+      <div class="colorList">
+        <div class="block" v-for="color in colorList" :styl="{backgroundColor: color.color}" @click="p.color=color.name"></div>
+      </div>
     </li>
+    <button @click="addPostit">+ New Sticker</button>
   </ul>
 </div>

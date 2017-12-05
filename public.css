@@ -13,6 +13,13 @@ hmtml, body {
   height: 100%;
 }
 
+.block {
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  display: inline-block;
+}
+
 .postit {
   width: 240px;
   height: 240px;
@@ -26,6 +33,7 @@ hmtml, body {
   box-shadow: 15px 10px 40px rgba(0, 0, 0, 0.4);
   position: absolute;
   transition: background-color 0.5s;
+  cursor: pointer;
   position: fixed;
   right: 20px;
   top: 20px;
