@@ -13,9 +13,9 @@
       <input v-model="p.text"/>
       <!--input(v-model="p.color")-->
       <div class="colorList">
-        <div class="block" v-for="color in colorList" :style="{backgroundColor: color.color}" @click="p.color=color.name"></div>
+        <div class="block" v-for="color in colorList" :style="{backgroundColor: color.color}" @click="setColor(pid, color.name)"></div>
         <button class="btn" @click="setText(pid)">Edit</button>
-        <button class="btn" @click="postits.splice(pid,1)">Delete</button>
+        <button class="btn" @click="deletePostit(pid)">Delete</button>
         <button class="btn" @click="addPostit">+ New Sticker</button>
       </div>
     </li>

@@ -63,8 +63,12 @@ var vm = new Vue({
         let nowPostit = this.postits[this.nowId];
         nowPostit.pos.x = this.mousePos.x - this.startMousePos.x;
         nowPostit.pos.y = this.mousePos.y - this.startMousePos.y;
+        
+        postitsRef.child(this.nowId).set(nowPostit)
+      
+      
       }
-      console.log(this.mousePos);
+      // console.log(this.mousePos);
     }
   },
 
@@ -112,9 +116,17 @@ var vm = new Vue({
       if (text) {
         this.postits[pid].text = text;
       }
+      postitsRef.child(pid).set(this.postits[pid])
+    },
+    setColor(pid, colorname){
+      this.postits[pid].color=colorname
+      postitsRef.child(pid).set(this.postits[pid])
+    },
+    deletePostit(pid){
+      postitsRef.child(pid).remove()
     }
   }
-});
+})
 
 window.onmousemove = function(evt) {
   console.log(evt);
