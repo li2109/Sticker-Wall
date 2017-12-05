@@ -1,23 +1,18 @@
 
 <div id="app">
-  <transition-group name="fade" tag="ul">
-    <li class="postit" v-for="(p, pid) in postits" :key="pid" :style="postitCss(p)" @mousedown="selectId($event, pid)">
-      <div class="text">{{p.text}}</div>
+  <transition-group tag="ul" name="fade">
+    <li class="postit" v-for="(p,pid) in postits" :style="postitCss(p)" @mousedown="selectId($event,pid)" @touchstart="selectId($event,pid)" :key="pid">
+      <div class="text" v-html="newLineToBr(p.text)"></div>
+      <div class="colorPalettes">
+        <div class="block" v-for="c in colorList" :style="{'background-color': c.color}" @click="setPostitColor(pid,c.name)"></div>
+      </div><i class="fa fa-pencil" @click="editText(pid)"></i><i class="fa fa-trash-o" @click="deletePostit(pid)"></i>
     </li>
   </transition-group>
   <ul class="datalist">
-    <li>
-      <h1 style="color: white">{{nowId}}</h1>
-    </li>
-    <li v-for="(p, pid) in postits">
-      <input v-model="p.text"/>
-      <!--input(v-model="p.color")-->
-      <div class="colorList">
-        <div class="block" v-for="color in colorList" :style="{backgroundColor: color.color}" @click="setColor(pid, color.name)"></div>
-        <button class="btn" @click="setText(pid)">Edit</button>
-        <button class="btn" @click="deletePostit(pid)">Delete</button>
-        <button class="btn" @click="addPostit">+ New Sticker</button>
-      </div>
+    <li class="addPost" @click="addPostit">Add PostIt +      </li>
+    <li v-for="(p,pid) in postits">
+      <h3 class="title">{{p.text}} ({{p.color}})</h3>
+      <textarea v-model="p.text" v-on:change="updateText(pid)"></textarea>
     </li>
   </ul>
 </div>
