@@ -53,8 +53,8 @@ var vm = new Vue({
   },
 
   methods: {
-    getColor(name){
-      return this.colorList.find(o=>o.name==name)
+    getColor(name) {
+      return this.colorList.find(o => o.name == name);
     },
     postitCss(p) {
       return {
@@ -66,23 +66,29 @@ var vm = new Vue({
     },
     selectId(evt, id) {
       console.log(id);
-      this.nowId = id;
-      this.startMousePos = {
-        x: evt.offsetX,
-        y: evt.offsetY
-      };
-      console.log("start", this.startMousePos);
+      let isBlock = evt.srcElement.classList.contains("block");
+      let isBtn = evt.srcElement.classList.contains("btn");
+      if (!isBlock && !isBtn) {
+        this.nowId = id;
+        this.startMousePos = {
+          x: evt.offsetX,
+          y: evt.offsetY
+        };
+        console.log("start", this.startMousePos);
+      } else {
+        this.nowId = -1;
+        console.log("click block");
+      }
     },
-    addPostit(){
-      this.postits.push(
-      {
+    addPostit() {
+      this.postits.push({
         text: "Text",
         color: "yellow",
-        pos: { x: 200+Math.random()*200, 
-              y: 200+Math.random()*200 }
-      }
-      
-      )
+        pos: {
+          x: 200 + Math.random() * 200,
+          y: 200 + Math.random() * 200
+        }
+      });
     }
   }
 });

@@ -33,13 +33,23 @@ hmtml, body {
   position: absolute;
   transition: background-color 0.5s;
   cursor: pointer;
+}
+.postit .text {
+  pointer-events: none;
+}
+.postit .colorList {
+  position: absolute;
+  bottom: -60px;
+}
+.postit .colorList .block {
+  margin-right: 10px;
+}
+
+.datalist {
   position: fixed;
   right: 20px;
   top: 20px;
   width: 30%;
-}
-.postit .text {
-  pointer-events: none;
 }
 
 .fade-enter-active, .fade-leave-active {
