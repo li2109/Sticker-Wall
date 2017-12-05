@@ -1,6 +1,5 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanssc.css);
 *, *:before, *:after {
-  border: solid 1px;
   font-family: "Noto Sans SC";
   color: #44403F;
 }
@@ -38,4 +37,15 @@ hmtml, body {
   right: 20px;
   top: 20px;
   width: 30%;
+}
+.postit .text {
+  pointer-events: none;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }

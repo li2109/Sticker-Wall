@@ -1,8 +1,10 @@
 
 <div id="app">
-  <div class="postit" v-for="(p, pid) in postits" :style="postitCss(p)" @mousedown="selectId($event, pid)">
-    <div class="text">{{p.text}}</div>
-  </div>
+  <transiton-group name="fade" tag="ul">
+    <li class="postit" v-for="(p, pid) in postits" :key="pid" :style="postitCss(p)" @mousedown="selectId($event, pid)">
+      <div class="text">{{p.text}}</div>
+    </li>
+  </transiton-group>
   <ul class="datalist">
     <li>
       <h1 style="color: white">{{nowId}}</h1>
