@@ -1,3 +1,19 @@
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyCidSeKYeJlTZ3eJhKntSEIvMhliKmcf5Y",
+  authDomain: "sticker-wall-6631a.firebaseapp.com",
+  databaseURL: "https://sticker-wall-6631a.firebaseio.com",
+  projectId: "sticker-wall-6631a",
+  storageBucket: "sticker-wall-6631a.appspot.com",
+  messagingSenderId: "798682547239"
+};
+firebase.initializeApp(config);
+
+var postitsRef = firebase.database().ref("postits");
+postitsRef.on("value", snapshot => {
+  vm.postits = snapshot.val();
+});
+
 var vm = new Vue({
   el: "#app",
   data: {
@@ -81,7 +97,7 @@ var vm = new Vue({
       }
     },
     addPostit() {
-      this.postits.push({
+      postitsRef.push({
         text: "Text",
         color: "yellow",
         pos: {
@@ -90,13 +106,12 @@ var vm = new Vue({
         }
       });
     },
-    setText(pid){
-      let text = prompt("Please input new sentence!",this.postits[pid].text)
-      
-      if(text){
-        this.postits[pid].text = text
+    setText(pid) {
+      let text = prompt("Please input new sentence!", this.postits[pid].text);
+
+      if (text) {
+        this.postits[pid].text = text;
       }
-      
     }
   }
 });
